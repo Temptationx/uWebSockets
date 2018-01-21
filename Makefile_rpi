@@ -1,0 +1,37 @@
+all: libuWS.a
+
+Extensions.o: src/Extensions.cpp
+        gcc -O3 -std=c++11 -I src -c src/Extensions.cpp
+
+Group.o: src/Group.cpp
+        gcc -O3 -std=c++11 -I src -c src/Group.cpp
+
+Networking.o: src/Networking.cpp
+        gcc -O3 -std=c++11 -I src -c src/Networking.cpp        
+
+Hub.o: src/Hub.cpp
+        gcc -O3 -std=c++11 -I src -c src/Hub.cpp
+
+Node.o: src/Node.cpp
+        gcc -O3 -std=c++11 -I src -c src/Node.cpp
+
+WebSocket.o: src/WebSocket.cpp
+        gcc -O3 -std=c++11 -I src -c src/WebSocket.cpp
+
+
+HTTPSocket.o: src/HTTPSocket.cpp
+        gcc -O3 -std=c++11 -I src -c src/HTTPSocket.cpp
+
+
+Socket.o: src/Socket.cpp
+        gcc -O3 -std=c++11 -I src -c src/Socket.cpp
+
+
+Epoll.o: src/Epoll.cpp
+        gcc -O3 -std=c++11 -I src -c src/Epoll.cpp
+
+
+libuWS.a: Extensions.o Group.o Networking.o Hub.o Node.o WebSocket.o  HTTPSocket.o Socket.o Epoll.o
+        ar rcs libuWS.a Extensions.o Group.o Networking.o Hub.o Node.o WebSocket.o  HTTPSocket.o Socket.o Epoll.o
+clean:
+        rm -f *.o *.a
